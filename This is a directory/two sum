@@ -1,0 +1,39 @@
+/*
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+
+*/
+//此题首先想到的是暴力搜索，虽然暴力，复杂度也很高，但是。。。简单啊
+//所以我立刻就用了这个方法实现成功了。。。。。
+//代码如下
+//另一种在下面。。
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] num = new int[2];
+        for(int i = 0 ;i < nums.length ;i++) {
+            for(int j = i+1;j<nums.length;j++) {
+                if(nums[i] + nums[j] == target) {
+                    num[0] = i;
+                    num[1] = j;
+                    break;
+                }
+                
+                
+            }
+          
+        }
+    return num;
+        
+    }
+}
+
+//另一种是用HashMap的方法。一会研究他！！

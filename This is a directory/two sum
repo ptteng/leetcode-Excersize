@@ -63,7 +63,8 @@ class Solution {
 //第三种方法，用HashMap，因为从集合中找值，Hash Table 能够很好的进行查找，而且给定键来找值，几乎是线性时间的。
 //因为要想更加快速的找到元素所在的位置，就必须将键设为值，值设为键。所以导入hashmap里的时候，要反着导，，，这就避免了for循环查找的繁琐
 //因为一定会有两个操作。1.找到两个元素，2、通过元素查找位置。
-//有一个疑问，如果输入是3 3 2    6 这样的 为什么能成功呢？？ hashmap是键值唯一的啊。。。
+//有一个疑问，如果输入是3 3 2    6 这样的 为什么能成功呢？？ hashmap是键值唯一的啊。。。插不进去。。
+//懂了 能插进去  而且相同的元素 会替换掉。。因为键是相同的 所以值每次都取最大的。。。
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> m = new HashMap<Integer,Integer>();
@@ -87,5 +88,23 @@ class Solution {
 //想一下，我又没有可能在一个循环中做完呢？？
 
 //那必须得遍查边导。
-//因为要arget - nums[i]，不能是他自己，
+//这个想法是先找到最后一个元素。
+//然后根据最后一个元素和HashMap 配对。不会出现同一个元素相加的情况，因为hashMap里面永远都是比他少一个元素。
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> m = new HashMap<Integer,Integer>();
+            for(int i = 0;i<nums.length;i++) {
+                int f = target - nums[i];
+                
+                if(m.containsKey(f)  ) {//
+                    return new int[] {m.get(f),i};
+                }
+                m.put(nums[i],i);
+                
+            }
+        
+    throw new IllegalArgumentException("no such argument");
+        
+    }
+}
 
